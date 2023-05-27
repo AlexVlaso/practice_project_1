@@ -1,4 +1,5 @@
 "use strict";
+import forms from "./modules/forms";
 import modals from "./modules/modal";
 import tabs from "./modules/tabs";
 import "./slider";
@@ -17,4 +18,5 @@ document.addEventListener("DOMContentLoaded", () => {
     ".glazing_block",
     "slick-current"
   );
+  forms();
 });
