@@ -1,10 +1,12 @@
 "use strict";
+import changeModalState from "./modules/changeModalState";
 import forms from "./modules/forms";
 import modals from "./modules/modal";
 import tabs from "./modules/tabs";
 import "./slider";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const modalState = {};
   modals();
   tabs(
     ".decoration_slider",
@@ -18,5 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ".glazing_block",
     "slick-current"
   );
-  forms();
+  tabs(
+    ".balcon_icons",
+    ".big_img>img",
+    ".balcon_icons_img",
+    "do_image_more",
+    "inline-block"
+  );
+  forms(modalState);
+  changeModalState(modalState);
 });
