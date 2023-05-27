@@ -3,10 +3,12 @@ import changeModalState from "./modules/changeModalState";
 import forms from "./modules/forms";
 import modals from "./modules/modal";
 import tabs from "./modules/tabs";
+import timer from "./modules/timer";
 import "./slider";
 
 document.addEventListener("DOMContentLoaded", () => {
   const modalState = {};
+  const endDate = "2023-05-28";
   modals();
   tabs(
     ".decoration_slider",
@@ -29,4 +31,5 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   forms(modalState);
   changeModalState(modalState);
+  timer("#timer", endDate);
 });
