@@ -9,6 +9,7 @@ const modals = () => {
     const modal = document.querySelector(modalSelector);
     const closeBtn = modal.querySelector(closeSelector);
     const windows = document.querySelectorAll("[data-modal]");
+    const scroll = calcScroll();
 
     const closeAnotherModals = () => {
       windows.forEach((item) => {
@@ -24,17 +25,20 @@ const modals = () => {
         closeAnotherModals();
         modal.style.display = "block";
         document.body.style.overflow = "hidden";
+        document.body.style.paddingRight = `${scroll}px`;
       });
       closeBtn.addEventListener("click", () => {
         closeAnotherModals();
         modal.style.display = "none";
         document.body.style.overflow = "";
+        document.body.style.paddingRight = `0px`;
       });
       modal.addEventListener("click", (e) => {
         if (e.target === modal && isOverlayClose) {
           closeAnotherModals();
           modal.style.display = "none";
           document.body.style.overflow = "";
+          document.body.style.paddingRight = `0px`;
         }
       });
     });
@@ -45,6 +49,16 @@ const modals = () => {
       document.body.style.overflow = "hidden";
     }, time);
   };
+  function calcScroll() {
+    const box = document.createElement("div");
+    box.style.width = "50px";
+    box.style.height = "50px";
+    box.style.overflowY = "scroll";
+    box.style.visibility = "hidden";
+    document.body.append(box);
+    const width = box.offsetWidth - box.clientWidth;
+    return width;
+  }
   bindModal(".popup_engineer_btn", ".popup_engineer", ".popup_close");
   bindModal(".phone_link", ".popup", ".popup_close");
   bindModal(".popup_calc_btn", ".popup_calc", ".popup_calc_close");
